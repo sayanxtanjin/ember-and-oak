@@ -1,0 +1,18 @@
+/* Site header: logo, nav links, cart icon and the login/account
+   controls. See js/header-footer.js for the markup this styles. */
+
+#site-header{position:sticky; top:0; z-index:50; background:rgba(24,20,16,0.96); backdrop-filter:blur(6px); border-bottom:1px solid var(--line-dark); padding-top:env(safe-area-inset-top,0px);}
+.hdr-inner{display:flex; align-items:center; justify-content:space-between; height:76px; gap:24px;}
+.brand{display:flex; align-items:center; gap:10px; color:var(--cream); font-family:var(--font-display); font-size:21px; font-weight:600; letter-spacing:.2px;}
+.brand .mark{width:34px; height:34px; border-radius:50%; background:linear-gradient(155deg,var(--bronze-light),var(--wine)); display:flex; align-items:center; justify-content:center; color:#fff; font-size:16px;}
+.nav-links{display:flex; gap:28px; list-style:none; margin:0; padding:0;}
+.nav-links a{color:#D9CFBC; font-size:14.5px; font-weight:500; padding:6px 0; border-bottom:2px solid transparent; transition:color .15s, border-color .15s;}
+.nav-links a:hover, .nav-links a.active{color:var(--bronze-light); border-color:var(--bronze-light);}
+.hdr-actions{display:flex; align-items:center; gap:10px;}
+.hdr-actions .icon-btn{border-color:#4a4136; color:#D9CFBC;}
+.hdr-actions .icon-btn:hover{border-color:var(--bronze-light); color:var(--bronze-light);}
+.cart-badge{position:absolute; top:-4px; right:-4px; background:var(--wine); color:#fff; font-size:10px; font-weight:700; min-width:17px; height:17px; border-radius:50%; display:flex; align-items:center; justify-content:center; padding:0 3px;}
+.hdr-actions .rel{position:relative;}
+@media (max-width: 900px){
+  .nav-links{display:none;}
+}

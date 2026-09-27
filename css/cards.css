@@ -1,0 +1,53 @@
+/* Reusable cards: dish cards, category chips, branch cards, offer
+   cards, review cards and the generic .panel/.grid-2/.grid-3 layout
+   helpers they're built from. */
+
+.chip-row{display:flex; gap:10px; overflow-x:auto; padding-bottom:6px; -webkit-overflow-scrolling:touch;}
+.chip{flex:0 0 auto; padding:9px 18px; border-radius:30px; border:1px solid var(--line); background:var(--paper); font-size:13.5px; font-weight:600; color:var(--ink-soft); white-space:nowrap; transition:all .15s;}
+.chip.active, .chip:hover{background:var(--charcoal); color:var(--cream); border-color:var(--charcoal);}
+
+.food-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:22px; margin-top:30px;}
+.food-card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden; transition:transform .25s ease, box-shadow .25s ease; display:flex; flex-direction:column;}
+.food-card:hover{transform:translateY(-5px); box-shadow:var(--shadow);}
+.food-media{position:relative; background:linear-gradient(155deg,var(--stone),var(--cream)); height:150px; display:flex; align-items:center; justify-content:center; font-size:64px;}
+.food-fav{position:absolute; top:10px; right:10px; width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.85); border:none; display:flex; align-items:center; justify-content:center; font-size:16px;}
+.food-fav.active{color:var(--wine);}
+.food-badges{position:absolute; top:10px; left:10px; display:flex; gap:6px;}
+.badge{font-size:10.5px; font-weight:700; letter-spacing:.2px; padding:4px 8px; border-radius:20px; background:var(--charcoal); color:#fff;}
+.badge.gold{background:var(--bronze); color:#211705;}
+.badge.wine{background:var(--wine); color:#fff;}
+.badge.muted{background:var(--ink-soft); color:#fff;}
+.food-body{padding:16px 18px 18px; display:flex; flex-direction:column; gap:8px; flex:1;}
+.food-title-row{display:flex; justify-content:space-between; align-items:flex-start; gap:8px;}
+.food-title-row h3{font-size:17px;}
+.food-price{font-family:var(--font-display); font-weight:600; color:var(--wine); font-size:16px; white-space:nowrap;}
+.food-desc{font-size:13.5px; flex:1;}
+.food-meta{display:flex; align-items:center; gap:10px; font-size:12.5px; color:var(--ink-soft);}
+.food-foot{display:flex; align-items:center; justify-content:space-between; margin-top:6px; gap:10px;}
+.stars{color:var(--bronze); font-size:13px;}
+.food-card.unavailable .food-media{filter:grayscale(1); opacity:.6;}
+.food-card.unavailable{opacity:.75;}
+
+.panel{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-lg); padding:24px;}
+.grid-2{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+.grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+@media (max-width:800px){.grid-2,.grid-3{grid-template-columns:1fr;}}
+
+.offer-card{background:var(--charcoal); color:var(--cream); border-radius:var(--radius-lg); padding:28px; position:relative; overflow:hidden;}
+.offer-card::after{content:"%"; position:absolute; right:-6px; bottom:-30px; font-family:var(--font-display); font-size:150px; opacity:.06; color:var(--bronze-light);}
+.offer-card h3{color:#fff; font-size:22px;}
+.offer-code{display:inline-block; margin-top:14px; border:1px dashed var(--bronze-light); color:var(--bronze-light); padding:8px 14px; border-radius:4px; font-weight:700; letter-spacing:1px; font-size:13px;}
+
+.branch-card{border:1px solid var(--line); border-radius:var(--radius-lg); padding:22px; background:var(--paper); display:flex; flex-direction:column; gap:10px;}
+.status-dot{width:8px; height:8px; border-radius:50%; display:inline-block; margin-right:6px;}
+.status-open{background:var(--success);}
+.status-closed{background:var(--danger);}
+.branch-tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;}
+.tag{font-size:11.5px; font-weight:600; padding:4px 9px; border-radius:20px; background:var(--stone); color:var(--ink-soft);}
+.tag.on{background:rgba(63,107,75,0.15); color:var(--success);}
+.tag.off{background:rgba(168,58,58,0.12); color:var(--danger);}
+
+.review-card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-lg); padding:20px;}
+.review-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;}
+.avatar{width:36px; height:36px; border-radius:50%; background:var(--stone); display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--wine); font-size:14px;}
+.review-name{display:flex; align-items:center; gap:10px; font-weight:600; font-size:14px;}

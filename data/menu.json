@@ -1,0 +1,436 @@
+[
+  {
+    "id": "f1",
+    "name": "Margherita al Forno",
+    "category": "cat-pizza",
+    "price": 590,
+    "desc": "San Marzano tomato, fior di latte, torn basil, first-press olive oil.",
+    "art": "pizza_margherita",
+    "rating": 4.8,
+    "prepTime": 16,
+    "featured": true,
+    "popular": true,
+    "available": true,
+    "sizes": [
+      {
+        "name": "Regular",
+        "delta": 0
+      },
+      {
+        "name": "Large",
+        "delta": 180
+      },
+      {
+        "name": "Family",
+        "delta": 340
+      }
+    ],
+    "variants": [],
+    "image": "/uploads/ce98d091-68bf-45fe-ba51-9a68e0ca4078.jpg"
+  },
+  {
+    "id": "f2",
+    "name": "Smoked Pepperoni Supreme",
+    "category": "cat-pizza",
+    "price": 690,
+    "desc": "Double pepperoni, smoked chili oil, aged mozzarella.",
+    "art": "pizza_pepperoni",
+    "rating": 4.7,
+    "prepTime": 18,
+    "featured": true,
+    "popular": true,
+    "available": true,
+    "sizes": [
+      {
+        "name": "Regular",
+        "delta": 0
+      },
+      {
+        "name": "Large",
+        "delta": 180
+      },
+      {
+        "name": "Family",
+        "delta": 340
+      }
+    ],
+    "variants": [],
+    "image": "/uploads/1aac9252-9c0e-453a-a218-4789126f0f5b.jpg"
+  },
+  {
+    "id": "f3",
+    "name": "Wild Mushroom & Truffle",
+    "category": "cat-pizza",
+    "price": 790,
+    "desc": "Roasted wild mushrooms, taleggio, truffle honey drizzle.",
+    "art": "pizza_truffle",
+    "rating": 4.9,
+    "prepTime": 19,
+    "featured": true,
+    "popular": false,
+    "available": true,
+    "sizes": [
+      {
+        "name": "Regular",
+        "delta": 0
+      },
+      {
+        "name": "Large",
+        "delta": 200
+      }
+    ],
+    "variants": [],
+    "image": "/uploads/afbb6787-7214-42f0-a271-6b0ea093bc86.jpg"
+  },
+  {
+    "id": "f4",
+    "name": "The Oak Smash Burger",
+    "category": "cat-burger",
+    "price": 520,
+    "desc": "Double smashed patty, aged cheddar, oak-smoked bacon, burnt-ends sauce.",
+    "art": "burger_smash",
+    "rating": 4.7,
+    "prepTime": 14,
+    "featured": true,
+    "popular": true,
+    "available": true,
+    "sizes": [],
+    "variants": [
+      {
+        "name": "Regular"
+      },
+      {
+        "name": "Extra Patty (+180)"
+      }
+    ],
+    "image": "/uploads/5cff7580-173c-464c-a87b-fccd2523f0c5.jpg"
+  },
+  {
+    "id": "f5",
+    "name": "Charred Chicken Burger",
+    "category": "cat-burger",
+    "price": 470,
+    "desc": "Buttermilk fried thigh, pickled slaw, chipotle mayo, brioche bun.",
+    "art": "burger_chicken",
+    "rating": 4.5,
+    "prepTime": 13,
+    "featured": false,
+    "popular": true,
+    "available": true,
+    "sizes": [],
+    "variants": [
+      {
+        "name": "Mild"
+      },
+      {
+        "name": "Spicy"
+      }
+    ],
+    "image": "/uploads/d17389c0-be76-46f3-8e7a-12c84b84d3bc.jpg"
+  },
+  {
+    "id": "f6",
+    "name": "Half Rotisserie Chicken",
+    "category": "cat-chicken",
+    "price": 650,
+    "desc": "Slow-turned over embers, herb butter baste, garlic jus.",
+    "art": "chicken_rotisserie",
+    "rating": 4.8,
+    "prepTime": 25,
+    "featured": true,
+    "popular": true,
+    "available": true,
+    "sizes": [],
+    "variants": [
+      {
+        "name": "Mild"
+      },
+      {
+        "name": "Medium"
+      },
+      {
+        "name": "Hot"
+      }
+    ],
+    "image": "/uploads/19dc928b-be85-446b-998f-173b82351be2.jpg"
+  },
+  {
+    "id": "f7",
+    "name": "Peri-Peri Wings (8pc)",
+    "category": "cat-chicken",
+    "price": 420,
+    "desc": "Flame-grilled wings, house peri-peri glaze, lime.",
+    "art": "wings",
+    "rating": 4.6,
+    "prepTime": 15,
+    "featured": false,
+    "popular": true,
+    "available": true,
+    "sizes": [],
+    "variants": [
+      {
+        "name": "Mild"
+      },
+      {
+        "name": "Medium"
+      },
+      {
+        "name": "Hot"
+      }
+    ],
+    "image": "/uploads/2c0965d8-b66d-4b4d-b7f4-1a174bd188de.jpg"
+  },
+  {
+    "id": "f8",
+    "name": "Tagliatelle al Ragù",
+    "category": "cat-pasta",
+    "price": 560,
+    "desc": "12-hour beef & pork ragù, hand-rolled tagliatelle, pecorino.",
+    "art": "pasta_ragu",
+    "rating": 4.7,
+    "prepTime": 17,
+    "featured": false,
+    "popular": false,
+    "available": true,
+    "sizes": [],
+    "variants": [],
+    "image": "/uploads/44012ef1-a887-47d0-9eca-4b854822534e.jpg"
+  },
+  {
+    "id": "f9",
+    "name": "Truffle Mushroom Fettuccine",
+    "category": "cat-pasta",
+    "price": 610,
+    "desc": "Cream sauce, wild mushrooms, black truffle shavings.",
+    "art": "pasta_truffle",
+    "rating": 4.8,
+    "prepTime": 17,
+    "featured": false,
+    "popular": false,
+    "available": true,
+    "sizes": [],
+    "variants": [],
+    "image": "/uploads/7adc79f2-75c1-4df9-b51b-d7ae2e6ccb4b.jpg"
+  },
+  {
+    "id": "f10",
+    "name": "Smoked Beef Tehari",
+    "category": "cat-rice",
+    "price": 480,
+    "desc": "Slow-smoked beef shank, fragrant kalojeera rice, fried onion.",
+    "art": "rice_tehari",
+    "rating": 4.9,
+    "prepTime": 22,
+    "featured": true,
+    "popular": true,
+    "available": true,
+    "sizes": [],
+    "variants": [],
+    "image": "/uploads/7ea16ac8-9753-4b9e-81fe-ff2412b2472c.jpg"
+  },
+  {
+    "id": "f11",
+    "name": "Grilled Salmon & Rice",
+    "category": "cat-rice",
+    "price": 820,
+    "desc": "Char-grilled salmon, saffron rice, lemon-caper butter.",
+    "art": "salmon_rice",
+    "rating": 4.6,
+    "prepTime": 20,
+    "featured": false,
+    "popular": false,
+    "available": true,
+    "sizes": [],
+    "variants": [],
+    "image": "/uploads/14c0d874-ef20-4b7f-ba6d-2006e6097ed8.jpg"
+  },
+  {
+    "id": "f12",
+    "name": "Charred Corn Elote",
+    "category": "cat-small",
+    "price": 220,
+    "desc": "Grilled corn, chili-lime crema, cotija, coriander.",
+    "art": "corn",
+    "rating": 4.4,
+    "prepTime": 10,
+    "featured": false,
+    "popular": false,
+    "available": true,
+    "sizes": [],
+    "variants": [],
+    "image": "/uploads/3454a845-0321-4348-8ddc-7195f42001f8.jpg"
+  },
+  {
+    "id": "f13",
+    "name": "Burrata & Heirloom Tomato",
+    "category": "cat-small",
+    "price": 390,
+    "desc": "Creamy burrata, heirloom tomatoes, basil oil, sourdough crisp.",
+    "art": "burrata",
+    "rating": 4.7,
+    "prepTime": 8,
+    "featured": false,
+    "popular": false,
+    "available": true,
+    "sizes": [],
+    "variants": [],
+    "image": "/uploads/2aad5a19-4600-4c3b-9501-a3f70f711d5e.jpg"
+  },
+  {
+    "id": "f14",
+    "name": "Wood-Fired Garlic Bread",
+    "category": "cat-small",
+    "price": 180,
+    "desc": "Charred sourdough, garlic-herb butter, parmesan.",
+    "art": "bread",
+    "rating": 4.5,
+    "prepTime": 9,
+    "featured": false,
+    "popular": true,
+    "available": true,
+    "sizes": [],
+    "variants": [],
+    "image": "/uploads/ce9d83f1-554c-4982-9fd5-8082dd2a6006.jpg"
+  },
+  {
+    "id": "f15",
+    "name": "Molten Chocolate Fondant",
+    "category": "cat-dessert",
+    "price": 290,
+    "desc": "Valrhona dark chocolate, vanilla bean ice cream.",
+    "art": "chocolate_fondant",
+    "rating": 4.9,
+    "prepTime": 14,
+    "featured": true,
+    "popular": true,
+    "available": true,
+    "sizes": [],
+    "variants": [],
+    "image": "/uploads/4fd367fa-a1d1-4b7f-8989-93104d8760b4.jpg"
+  },
+  {
+    "id": "f16",
+    "name": "Basque Burnt Cheesecake",
+    "category": "cat-dessert",
+    "price": 270,
+    "desc": "Caramelised top, silky centre, sea-salt crumb.",
+    "art": "cheesecake",
+    "rating": 4.8,
+    "prepTime": 5,
+    "featured": false,
+    "popular": true,
+    "available": true,
+    "sizes": [],
+    "variants": [],
+    "image": "/uploads/b23a3fac-2c34-4899-921e-ccf11cf4033a.jpg"
+  },
+  {
+    "id": "f17",
+    "name": "Charcoal Lemonade",
+    "category": "cat-drinks",
+    "price": 180,
+    "desc": "Activated charcoal, fresh lemon, mint, soda.",
+    "art": "lemonade",
+    "rating": 4.3,
+    "prepTime": 5,
+    "featured": false,
+    "popular": false,
+    "available": true,
+    "sizes": [],
+    "variants": [],
+    "image": "/uploads/3765fe71-8a47-4036-94a9-bb69e457865f.jpg"
+  },
+  {
+    "id": "f18",
+    "name": "Cold Brew Espresso Tonic",
+    "category": "cat-drinks",
+    "price": 220,
+    "desc": "Double espresso, tonic water, orange peel.",
+    "art": "espresso_tonic",
+    "rating": 4.6,
+    "prepTime": 5,
+    "featured": false,
+    "popular": false,
+    "available": true,
+    "sizes": [],
+    "variants": [],
+    "image": "/uploads/81474d72-e73b-4f2c-bd06-25b191154a49.jpg"
+  },
+  {
+    "id": "f19",
+    "name": "House Berry Mocktail",
+    "category": "cat-drinks",
+    "price": 200,
+    "desc": "Mixed berries, basil, soda, lime.",
+    "art": "mocktail",
+    "rating": 4.4,
+    "prepTime": 5,
+    "featured": false,
+    "popular": false,
+    "available": true,
+    "sizes": [],
+    "variants": [],
+    "image": "/uploads/6034476a-53ef-4918-88af-7dcfbbb8a2ba.jpg"
+  },
+  {
+    "id": "f20",
+    "name": "Grilled Lamb Chops",
+    "category": "cat-rice",
+    "price": 990,
+    "desc": "Herb-marinated lamb chops, saffron pilaf, mint yoghurt.",
+    "art": "lamb_chops",
+    "rating": 4.9,
+    "prepTime": 24,
+    "featured": true,
+    "popular": false,
+    "available": false,
+    "sizes": [],
+    "variants": [],
+    "image": "/uploads/f82e854a-56d9-4e58-9f2f-b8b220d01c80.jpg"
+  },
+  {
+    "id": "f-m8hnc0g",
+    "name": "sausage carnival",
+    "desc": "",
+    "art": "pizza_margherita",
+    "image": "/uploads/e3334152-e989-499d-90ce-87efa8b974bb.jpg",
+    "category": "cat-pizza",
+    "price": 340,
+    "rating": 4.5,
+    "prepTime": 15,
+    "sizes": [
+      {
+        "name": "Small",
+        "delta": 340
+      },
+      {
+        "name": "Large",
+        "delta": 645
+      },
+      {
+        "name": "Family",
+        "delta": 1300
+      }
+    ],
+    "variants": [],
+    "available": true,
+    "featured": false,
+    "popular": true
+  },
+  {
+    "id": "f-ek54fv1",
+    "name": "Juice",
+    "desc": "",
+    "art": "mocktail",
+    "image": "/uploads/56c0c3d6-9433-4cfe-bf76-5fddbeba29eb.jpg",
+    "category": "cat-drinks",
+    "price": 400,
+    "rating": 4.5,
+    "prepTime": 15,
+    "sizes": [],
+    "variants": [],
+    "available": true,
+    "featured": false,
+    "popular": true
+  }
+]

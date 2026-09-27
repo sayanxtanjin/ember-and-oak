@@ -1,0 +1,36 @@
+/* Admin/manager dashboard shell (sidebar, topbar, KPI cards) and the
+   interactive line-chart styling used on the admin overview page. */
+
+.dash-shell{display:grid; grid-template-columns:240px 1fr; min-height:100vh;}
+@media (max-width:900px){.dash-shell{grid-template-columns:1fr;}}
+.dash-sidebar{background:var(--charcoal); color:#C9BFA9; padding:22px 16px; position:sticky; top:0; height:100vh; overflow-y:auto;}
+@media (max-width:900px){.dash-sidebar{position:static; height:auto; display:none;}
+  .dash-sidebar.open{display:block; height:auto;}}
+.dash-brand{display:flex; align-items:center; gap:10px; color:#fff; font-family:var(--font-display); font-size:18px; padding:8px 10px 22px;}
+.dash-nav{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:2px;}
+.dash-nav a{display:flex; align-items:center; gap:10px; padding:11px 12px; border-radius:var(--radius); font-size:13.8px; font-weight:500; color:#C9BFA9;}
+.dash-nav a:hover{background:#26201A; color:#fff;}
+.dash-nav a.active{background:var(--bronze); color:#211705; font-weight:700;}
+.dash-role-badge{margin:6px 10px 18px; font-size:11px; letter-spacing:.3px; color:#8A8072; text-transform:uppercase;}
+.dash-main{padding:26px 30px 70px; max-width:1400px;}
+@media (max-width:640px){.dash-main{padding:18px 16px 60px;}}
+.dash-topbar{display:flex; align-items:center; justify-content:space-between; margin-bottom:26px; gap:14px; flex-wrap:wrap;}
+.kpi-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-bottom:32px;}
+@media (max-width:1000px){.kpi-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:520px){.kpi-grid{grid-template-columns:1fr;}}
+.kpi-card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-lg); padding:20px;}
+.kpi-card .lbl{font-size:12.5px; color:var(--ink-soft); font-weight:600;}
+.kpi-card .val{font-family:var(--font-display); font-size:28px; margin-top:6px;}
+.kpi-card .delta{font-size:12px; margin-top:6px; color:var(--success); font-weight:600;}
+.kpi-card .delta.down{color:var(--danger);}
+
+.chart-card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-lg); padding:22px;}
+.chart-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px; gap:10px;}
+.chart-head h3{font-size:15px; font-family:var(--font-body); font-weight:700;}
+.chart-head .sub{font-size:11.5px; color:var(--ink-soft); font-weight:600;}
+.chart-svg-wrap{position:relative; cursor:crosshair;}
+.chart-svg-wrap svg text{font-family:var(--font-body); user-select:none;}
+.chart-tooltip{position:absolute; pointer-events:none; background:var(--charcoal); color:#fff; padding:9px 13px; border-radius:6px; font-size:12px; box-shadow:var(--shadow-sm); opacity:0; transition:opacity .12s ease, left .08s ease, top .08s ease; white-space:nowrap; transform:translate(-50%,-124%); z-index:5;}
+.chart-tooltip .tt-title{font-weight:700; margin-bottom:3px; font-size:12.5px;}
+.chart-tooltip .tt-row{display:flex; align-items:center; gap:6px; color:#D9CFBC;}
+.chart-tooltip .tt-dot{width:8px;height:8px;border-radius:2px;background:var(--bronze-light); flex:0 0 auto;}

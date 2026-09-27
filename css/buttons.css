@@ -1,0 +1,21 @@
+/* Buttons. .btn-primary and .btn-gold share the same bronze look and
+   hover so every main call-to-action matches (Add to cart, Sign up,
+   Checkout, ...). */
+
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:13px 26px; border-radius:var(--radius); font-weight:600; font-size:14.5px; border:1px solid transparent; transition:transform .15s ease, background .2s ease, color .2s ease, border-color .2s ease; white-space:nowrap;}
+.btn:active{transform:scale(0.97);}
+.btn-primary{background:var(--bronze); color:#211705; border-color:var(--bronze);}
+.btn-primary:hover{background:var(--bronze-light); border-color:var(--bronze-light);}
+.btn-gold{background:var(--bronze); color:#211705; border-color:var(--bronze);}
+.btn-gold:hover{background:var(--bronze-light);}
+.btn-outline{background:transparent; color:var(--ink); border-color:var(--line-dark);}
+.btn-outline:hover{border-color:var(--bronze); color:var(--bronze);}
+.btn-ghost{background:transparent; color:var(--ink); border-color:transparent;}
+.btn-ghost:hover{background:var(--stone);}
+.btn-danger{background:transparent; color:var(--danger); border-color:var(--danger);}
+.btn-danger:hover{background:var(--danger); color:#fff;}
+.btn-sm{padding:8px 14px; font-size:13px;}
+.btn-block{width:100%;}
+.btn:disabled{opacity:.45; cursor:not-allowed; transform:none;}
+.icon-btn{width:40px; height:40px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; background:transparent; border:1px solid var(--line-dark); color:var(--ink);}
+.icon-btn:hover{border-color:var(--bronze); color:var(--bronze);}

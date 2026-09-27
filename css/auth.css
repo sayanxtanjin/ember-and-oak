@@ -1,0 +1,7 @@
+/* Login/signup pages. */
+
+.auth-wrap{max-width:440px; margin:0 auto; padding:70px 20px 90px;}
+.auth-wrap .panel{padding:34px 30px;}
+.auth-head{text-align:center; margin-bottom:26px;}
+.auth-switch{text-align:center; margin-top:18px; font-size:13.5px; color:var(--ink-soft);}
+.demo-box{background:var(--cream); border:1px dashed var(--line-dark); border-radius:var(--radius); padding:12px 14px; font-size:12.5px; color:var(--ink-soft); margin-top:18px; line-height:1.7;}

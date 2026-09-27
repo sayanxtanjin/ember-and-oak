@@ -1,0 +1,18 @@
+/* Data tables + filter bars used on the admin/manager order, menu,
+   branch and customer lists. */
+
+.table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius-lg);}
+table{width:100%; border-collapse:collapse; font-size:13.8px; min-width:640px;}
+th{text-align:left; padding:12px 14px; background:var(--cream); font-size:12px; text-transform:none; letter-spacing:.2px; color:var(--ink-soft); font-weight:700; border-bottom:1px solid var(--line);}
+td{padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+.status-pill{padding:5px 11px; border-radius:20px; font-size:11.5px; font-weight:700; display:inline-block;}
+.st-pending{background:#EFE3C8; color:#7A5B15;}
+.st-confirmed{background:#DCE8F2; color:#28587D;}
+.st-preparing{background:#F0DDC0; color:#8A4B0F;}
+.st-ready{background:#DDEBDD; color:#2F6B33;}
+.st-outfordelivery{background:#E4DDF2; color:#4F3A8A;}
+.st-completed{background:#D8EFD9; color:#2A6B30;}
+.st-cancelled{background:#F3D9D9; color:#9C2F2F;}
+.filter-bar{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px;}
+.filter-bar input, .filter-bar select{padding:9px 12px; border:1px solid var(--line-dark); border-radius:var(--radius); font-size:13.5px; background:var(--paper); color:var(--ink);}
