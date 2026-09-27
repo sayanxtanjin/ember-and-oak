@@ -2,7 +2,6 @@ import { createHmac, randomUUID, timingSafeEqual } from "node:crypto";
 import { getStore } from "@netlify/blobs";
 import seedMenu from "./seed-menu.mjs";
 
-const uploads = getStore("ember-oak-uploads");
 const contentTypes = { jpg: "image/jpeg", jpeg: "image/jpeg", png: "image/png", webp: "image/webp" };
 const currencies = new Set(["৳", "$", "€", "£", "₹", "₨", "¥"]);
 
@@ -31,7 +30,7 @@ function isAdmin(request) {
   return a.length === b.length && timingSafeEqual(a, b);
 }
 
-async function getMenu() {
+async function getMenu(uploads) {
   const existing = await uploads.get("menu.json", { type: "json", consistency: "strong" });
   if (Array.isArray(existing)) return existing;
   const menu = Array.isArray(seedMenu) ? seedMenu : [];
@@ -52,6 +51,9 @@ export default async (request) => {
   try {
     const url = new URL(request.url);
     const path = apiPath(url);
+    // Create the store inside the request context so Netlify supplies its
+    // current function token instead of a token captured during module load.
+    const getUploads = () => getStore({ name: "ember-oak-uploads", consistency: "strong" });
     if (path === "/session" && request.method === "POST") {
       const body = await bodyJson(request, 16 * 1024);
       const email = (process.env.ADMIN_EMAIL || "admin@emberandoak.com").toLowerCase();
@@ -66,6 +68,7 @@ export default async (request) => {
       return json(200, { ok: true }, { "set-cookie": "eo_admin_session=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0; Secure" });
     }
     if (path === "/settings" && request.method === "GET") {
+      const uploads = getUploads();
       const settings = await uploads.get("site-settings.json", { type: "json", consistency: "strong" });
       return json(200, { currency: currencies.has(settings?.currency) ? settings.currency : null });
     }
@@ -73,14 +76,16 @@ export default async (request) => {
       if (!isAdmin(request)) return json(401, { error: "Sign in as admin to update the website settings." });
       const body = await bodyJson(request, 16 * 1024);
       if (!currencies.has(body?.currency)) return json(400, { error: "Choose a supported currency." });
+      const uploads = getUploads();
       await uploads.setJSON("site-settings.json", { currency: body.currency });
       return json(200, { ok: true });
     }
-    if (path === "/menu" && request.method === "GET") return json(200, { menu: await getMenu() });
+    if (path === "/menu" && request.method === "GET") return json(200, { menu: await getMenu(getUploads()) });
     if (path === "/menu" && request.method === "PUT") {
       if (!isAdmin(request)) return json(401, { error: "Sign in as admin to update the shared menu." });
       const body = await bodyJson(request, 16 * 1024 * 1024);
       if (!body || !Array.isArray(body.menu) || body.menu.length > 1000) return json(400, { error: "The menu data is invalid." });
+      const uploads = getUploads();
       await uploads.setJSON("menu.json", body.menu);
       return json(200, { ok: true });
     }
@@ -93,12 +98,14 @@ export default async (request) => {
       if (!bytes.length || bytes.length > 150 * 1024) return json(413, { error: "The optimized photo is too large. Choose a smaller image." });
       const ext = match[1].toLowerCase() === "jpeg" ? "jpg" : match[1].toLowerCase();
       const key = `${randomUUID()}.${ext}`;
+      const uploads = getUploads();
       await uploads.set(key, bytes, { metadata: { contentType: contentTypes[ext] } });
       return json(201, { url: `/api/images/${key}` });
     }
     const imageMatch = path.match(/^\/images\/([a-f0-9-]+\.(?:jpg|jpeg|png|webp))$/i);
     if (imageMatch && request.method === "GET") {
       const key = imageMatch[1];
+      const uploads = getUploads();
       const blob = await uploads.get(key, { type: "arrayBuffer", consistency: "strong" });
       if (blob) return new Response(blob, { headers: { "content-type": contentTypes[key.split(".").pop().toLowerCase()], "cache-control": "public, max-age=31536000, immutable", "x-content-type-options": "nosniff" } });
       return new Response("Image not found", { status: 404 });
