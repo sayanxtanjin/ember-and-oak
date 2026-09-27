@@ -5,6 +5,35 @@ function uid(prefix){ return prefix+"-"+Math.random().toString(36).slice(2,9); }
 
 function fmt(n){ return DB.config.currency + Number(n||0).toLocaleString("en-US",{maximumFractionDigits:0}); }
 
+const THEME_KEY = "eo_color_mode_v1";
+function activeTheme(){
+  const explicit = document.documentElement.dataset.theme;
+  return explicit || (window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+}
+function themeToggleHtml(){
+  const next = activeTheme()==="dark" ? "light" : "dark";
+  return `<button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Switch to ${next} mode" title="Switch to ${next} mode"><span aria-hidden="true">${next==="light"?"☀️":"🌙"}</span><span class="theme-label">${next==="light"?"Light":"Dark"}</span></button>`;
+}
+function toggleTheme(){
+  const next = activeTheme()==="dark" ? "light" : "dark";
+  document.documentElement.dataset.theme = next;
+  document.documentElement.style.colorScheme = next;
+  try{ localStorage.setItem(THEME_KEY,next); }catch(error){}
+  document.querySelectorAll(".theme-toggle").forEach(button=>{
+    const target = next==="dark" ? "light" : "dark";
+    button.setAttribute("aria-label",`Switch to ${target} mode`);
+    button.title = `Switch to ${target} mode`;
+    button.innerHTML = `<span aria-hidden="true">${target==="light"?"☀️":"🌙"}</span><span class="theme-label">${target==="light"?"Light":"Dark"}</span>`;
+  });
+}
+try{
+  const savedTheme = localStorage.getItem(THEME_KEY);
+  if(savedTheme==="dark" || savedTheme==="light"){
+    document.documentElement.dataset.theme = savedTheme;
+    document.documentElement.style.colorScheme = savedTheme;
+  }
+}catch(error){}
+
 function esc(s){ return (s==null?"":String(s)).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 
 function timeAgo(iso){

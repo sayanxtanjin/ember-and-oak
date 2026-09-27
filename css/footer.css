@@ -1,6 +1,7 @@
 /* Site footer, including the social icon row. */
 
 #site-footer{background:var(--charcoal); color:#C9BFA9; padding:64px 0 28px;}
+.foot-brand{color:var(--cream);}
 .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:40px;}
 @media (max-width:800px){.foot-grid{grid-template-columns:1fr 1fr;}}
 @media (max-width:520px){.foot-grid{grid-template-columns:1fr;}}

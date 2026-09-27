@@ -29,7 +29,8 @@ function foodCard(f){
 
 function offerCard(o){
   const valueLabel = o.type==="percentage" ? `${o.value}% OFF` : `${fmt(o.value)} OFF`;
-  return `<div class="offer-card"><h3>${valueLabel}</h3><p style="color:#C9BFA9;">${esc(o.desc)}</p>
+  const description = String(o.desc||"").replace(/[৳$€£₹₨¥](?=\s*\d)/g, DB.config.currency);
+  return `<div class="offer-card"><h3>${valueLabel}</h3><p style="color:#C9BFA9;">${esc(description)}</p>
     <div class="offer-code">${esc(o.code)}</div></div>`;
 }
 
@@ -106,4 +107,3 @@ function orderRowCard(o){
 function notifItem(n){
   return `<div class="notif-item ${n.read?'read':''}"><div class="notif-dot"></div><div><div style="font-weight:600; font-size:13.5px;">${esc(n.title)}</div><div class="small-muted">${esc(n.message)}</div><div class="small-muted" style="margin-top:2px;">${timeAgo(n.date)}</div></div></div>`;
 }
-

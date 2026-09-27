@@ -51,7 +51,7 @@ function renderDashboardShell(role, activeKey, pageTitle, contentHtml){
             <button class="icon-btn hide-desktop" onclick="toggleDashSidebar()">☰</button>
             <h2 style="font-size:22px;">${esc(pageTitle)}</h2>
           </div>
-          <div class="small-muted">Signed in as <b>${esc(user.name)}</b> (${user.role})</div>
+          <div class="dash-topbar-actions">${themeToggleHtml()}<div class="small-muted">Signed in as <b>${esc(user.name)}</b> (${user.role})</div></div>
         </div>
         <div id="dash-content">${contentHtml}</div>
       </div>
