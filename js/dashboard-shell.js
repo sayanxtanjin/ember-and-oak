@@ -13,7 +13,8 @@ const ADMIN_NAV = [
   ["customers","Customers","👥"],
   ["offers","Promotions","🏷️"],
   ["reviews","Reviews","⭐"],
-  ["settings","Settings","⚙️"]
+  ["settings","Settings","⚙️"],
+  ["account","Account","👤"]
 ];
 const MANAGER_NAV = [
   ["dashboard","Overview","📊"],
@@ -23,7 +24,7 @@ const MANAGER_NAV = [
 function dashboardNavHref(role, key){
   const p = paths();
   const map = {
-    admin: {dashboard:p.adminDashboard, orders:p.adminOrders, menu:p.adminMenu, categories:p.adminCategories, branches:p.adminBranches, customers:p.adminCustomers, offers:p.adminOffers, reviews:p.adminReviews, settings:p.adminSettings},
+    admin: {dashboard:p.adminDashboard, orders:p.adminOrders, menu:p.adminMenu, categories:p.adminCategories, branches:p.adminBranches, customers:p.adminCustomers, offers:p.adminOffers, reviews:p.adminReviews, settings:p.adminSettings, account:p.account+"?tab=settings"},
     manager: {dashboard:p.managerDashboard, orders:p.managerOrders}
   };
   return map[role][key];

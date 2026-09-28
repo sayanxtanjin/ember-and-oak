@@ -20,7 +20,7 @@ function renderAccountContent(){
   return `<section class="section-tight"><div class="container">
     <div class="sec-head"><div><h2>Hello, ${esc(user.name.split(" ")[0])}</h2><p>Manage your orders, favorites and profile.</p></div></div>
     <div class="tabs">
-      ${tabLink("overview","Overview",sub)}${tabLink("orders","Orders",sub)}${tabLink("favorites","Favorites",sub)}${tabLink("notifications","Notifications",sub)}${tabLink("settings","Profile",sub)}
+      ${tabLink("overview","Overview",sub)}${tabLink("orders","Orders",sub)}${tabLink("favorites","Favorites",sub)}${tabLink("notifications","Notifications",sub)}${tabLink("settings","Account",sub)}
     </div>
     ${sub==="overview" ? `
       <div class="kpi-grid">
@@ -42,7 +42,7 @@ function renderAccountContent(){
       ${myNotifs.length? `<div class="panel">${myNotifs.map(n=>notifItem(n)).join("")}</div>` : emptyState("🔔","No notifications","You're all caught up.")}
     ` : `
       <div class="panel" style="max-width:520px;">
-        <h3 style="margin-bottom:14px;">Profile</h3>
+        <h3 style="margin-bottom:14px;">Your account</h3>
         <div class="field"><label>Full name</label><input id="pf-name" value="${esc(user.name)}"></div>
         <div class="field"><label>Mobile number</label><input id="pf-mobile" value="${esc(user.mobile)}"></div>
         <div class="field"><label>Email</label><input value="${esc(user.email)}" disabled></div>
@@ -68,10 +68,12 @@ function switchAccountTab(key){
 
 function saveProfile(){
   const user = currentUser();
-  user.name = document.getElementById("pf-name").value.trim() || user.name;
+  const name=document.getElementById("pf-name").value.trim();
+  if(!name){toast("Please enter your name","error");return;}
+  user.name = name;
   user.mobile = document.getElementById("pf-mobile").value.trim();
   user.address = document.getElementById("pf-address").value.trim();
-  saveDB(); toast("Profile updated","success");
+  saveDB(); toast("Your account details were updated","success");
   document.getElementById("page-content").innerHTML = renderAccountContent();
 }
 
