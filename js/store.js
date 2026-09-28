@@ -45,6 +45,7 @@ async function loadDB(){
     if(response.ok){
       const settings = await response.json();
       if(typeof settings.currency==="string" && settings.currency) DB.config = Object.assign({},DB.config,{currency:settings.currency});
+      if(settings.site && typeof settings.site==="object") DB.config = Object.assign({},DB.config,settings.site);
     }
   }catch(error){
     console.warn("Shared site settings are unavailable; using this browser's saved settings.",error);
@@ -90,8 +91,30 @@ async function saveSharedMenu(menu){
 
 async function saveSharedCurrency(currency){
   const response = await fetch("/api/settings",{
-    method:"PUT", headers:{"Content-Type":"application/json"}, body:JSON.stringify({currency})
+    method:"PUT", headers:{"Content-Type":"application/json"}, body:JSON.stringify({currency,site:{
+      name:DB.config.name, tagline:DB.config.tagline, description:DB.config.description,
+      phone:DB.config.phone, email:DB.config.email, address:DB.config.address, hours:DB.config.hours,
+      deliveryDefaultFee:DB.config.deliveryDefaultFee, logoImage:DB.config.logoImage||"",
+      favicon:DB.config.favicon||"🔥",faviconImage:sharedImageUrl(DB.config.faviconImage)?DB.config.faviconImage:null,
+      social:DB.config.social||{}, pageContent:DB.config.pageContent||{}
+    }})
   });
   const result = await response.json().catch(()=>({}));
   if(!response.ok) throw new Error(result.error||"The website couldn't save the shared currency setting.");
 }
+
+async function saveSharedSiteSettings(){
+  const response=await fetch("/api/settings",{
+    method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({currency:DB.config.currency,site:{
+      name:DB.config.name,tagline:DB.config.tagline,description:DB.config.description,
+      phone:DB.config.phone,email:DB.config.email,address:DB.config.address,hours:DB.config.hours,
+      deliveryDefaultFee:DB.config.deliveryDefaultFee,logoImage:DB.config.logoImage||"",
+      favicon:DB.config.favicon||"🔥",faviconImage:sharedImageUrl(DB.config.faviconImage)?DB.config.faviconImage:null,
+      social:DB.config.social||{},pageContent:DB.config.pageContent||{}
+    }})
+  });
+  const result=await response.json().catch(()=>({}));
+  if(!response.ok) throw new Error(result.error||"The website couldn't save its shared site content.");
+}
+
+function sharedImageUrl(value){return typeof value==="string"&&(value.startsWith("/uploads/")||value.startsWith("/api/images/")||/^https:\/\//i.test(value));}

@@ -36,7 +36,7 @@ function renderDashboardShell(role, activeKey, pageTitle, contentHtml){
   return `
   <div class="dash-shell">
     <aside class="dash-sidebar" id="dash-sidebar">
-      <div class="dash-brand">🔥 ${esc(DB.config.name)}</div>
+      <div class="dash-brand">${DB.config.logoImage?`<img class="admin-brand-logo" src="${esc(DB.config.logoImage)}" alt="">`:"🔥"} ${esc(DB.config.name)}</div>
       <div class="dash-role-badge">${role} panel</div>
       <ul class="dash-nav">
         ${nav.map(([key,label,ic])=>`<li><a href="${dashboardNavHref(role,key)}" class="${activeKey===key?'active':''}">${ic} ${label}</a></li>`).join("")}

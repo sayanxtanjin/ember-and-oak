@@ -35,3 +35,10 @@
 .chart-tooltip .tt-title{font-weight:700; margin-bottom:3px; font-size:12.5px;}
 .chart-tooltip .tt-row{display:flex; align-items:center; gap:6px; color:#D9CFBC;}
 .chart-tooltip .tt-dot{width:8px;height:8px;border-radius:2px;background:var(--bronze-light); flex:0 0 auto;}
+.admin-brand-logo{width:30px;height:30px;object-fit:contain;vertical-align:middle;border-radius:5px;}
+.page-editor-panel{max-width:none!important;}
+.content-editor-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(240px,.7fr);gap:18px;align-items:start;}
+.content-editor-grid iframe{width:100%;height:min(72vh,760px);min-height:500px;border:1px solid var(--line);border-radius:10px;background:#fff;}
+.content-editor-fields{display:grid;gap:12px;position:sticky;top:16px;}
+.content-editor-fields .field{margin:0;}
+@media(max-width:850px){.content-editor-grid{grid-template-columns:1fr}.content-editor-grid iframe{height:62vh;min-height:420px}.content-editor-fields{position:static}}

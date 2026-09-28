@@ -15,5 +15,7 @@ const DEFAULT_CONFIG = {
   deliveryDefaultFee: 80,
   taxPercent: 0,
   favicon: "🔥",
-  faviconImage: null
+  faviconImage: null,
+  logoImage: "",
+  pageContent: {}
 };

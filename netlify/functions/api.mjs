@@ -70,14 +70,27 @@ export default async (request) => {
     if (path === "/settings" && request.method === "GET") {
       const uploads = getUploads();
       const settings = await uploads.get("site-settings.json", { type: "json", consistency: "strong" });
-      return json(200, { currency: currencies.has(settings?.currency) ? settings.currency : null });
+      return json(200, { currency: currencies.has(settings?.currency) ? settings.currency : null, site: settings?.site&&typeof settings.site==="object"?settings.site:null });
     }
     if (path === "/settings" && request.method === "PUT") {
       if (!isAdmin(request)) return json(401, { error: "Sign in as admin to update the website settings." });
-      const body = await bodyJson(request, 16 * 1024);
+      const body = await bodyJson(request, 512 * 1024);
       if (!currencies.has(body?.currency)) return json(400, { error: "Choose a supported currency." });
       const uploads = getUploads();
-      await uploads.setJSON("site-settings.json", { currency: body.currency });
+      const previous=await uploads.get("site-settings.json",{type:"json",consistency:"strong"})||{};
+      const site=body.site&&typeof body.site==="object"&&!Array.isArray(body.site)?body.site:{};
+      const stringFields=["name","tagline","description","phone","email","address","hours","logoImage","favicon"];
+      if(site.faviconImage!==undefined&&site.faviconImage!==null&&(typeof site.faviconImage!=="string"||site.faviconImage.length>500)) return json(400,{error:"The favicon image setting is invalid."});
+      if(typeof site.faviconImage==="string"&&site.faviconImage!==""&&!site.faviconImage.startsWith("/uploads/")&&!site.faviconImage.startsWith("/api/images/")&&!/^https:\/\//i.test(site.faviconImage)) return json(400,{error:"Use an HTTPS favicon URL or upload an icon image."});
+      for(const key of stringFields) if(site[key]!==undefined&&(typeof site[key]!=="string"||site[key].length>(key==="description"?3000:500))) return json(400,{error:`The ${key} setting is invalid.`});
+      if(site.logoImage!==undefined&&site.logoImage!==""&&!site.logoImage.startsWith("/uploads/")&&!site.logoImage.startsWith("/api/images/")&&!/^https:\/\//i.test(site.logoImage)) return json(400,{error:"Use an HTTPS logo URL or upload a logo image."});
+      if(site.pageContent!==undefined&&(typeof site.pageContent!=="object"||Array.isArray(site.pageContent)||JSON.stringify(site.pageContent).length>300000)) return json(400,{error:"Page content is invalid or too large."});
+      const safeSite={...(previous.site||{}),...Object.fromEntries(stringFields.filter(key=>typeof site[key]==="string").map(key=>[key,site[key]]))};
+      if(site.pageContent&&typeof site.pageContent==="object"&&!Array.isArray(site.pageContent)) safeSite.pageContent=site.pageContent;
+      if(site.faviconImage===null||typeof site.faviconImage==="string") safeSite.faviconImage=site.faviconImage;
+      if(site.social&&typeof site.social==="object"&&!Array.isArray(site.social)) safeSite.social=Object.fromEntries(["instagram","facebook","twitter"].filter(key=>typeof site.social[key]==="string").map(key=>[key,site.social[key].slice(0,500)]));
+      if(Number.isFinite(Number(site.deliveryDefaultFee))) safeSite.deliveryDefaultFee=Math.max(0,Math.min(100000,Number(site.deliveryDefaultFee)));
+      await uploads.setJSON("site-settings.json", { currency:body.currency,site:safeSite });
       return json(200, { ok: true });
     }
     if (path === "/menu" && request.method === "GET") return json(200, { menu: await getMenu(getUploads()) });
